@@ -4,8 +4,7 @@ local useFilesCache = false -- Хранить материалы в файлах
 
 betterRB = betterRB or {}
 
-betterRB.cache = {}
-local cache = betterRB.cache
+local cache = {}
 
 local function boolToNum(b)
     return b and 1 or 0
