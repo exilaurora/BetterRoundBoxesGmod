@@ -11,7 +11,7 @@ end
 function betterRB.GetRoundedBoxMaterial(round, w, h, tl, tr, bl, br)
     w, h = math.floor(w), math.floor(h)
     local shortName = string.format("b%u_%u_%u_%d%d%d%d", round, w, h, BoolToNum(tl), BoolToNum(tr), BoolToNum(bl), BoolToNum(br))
-    if cache[shortName] then
+    if cache[shortName] and IsValid(cache[shortName]) then
         return cache[shortName]
     end
 
