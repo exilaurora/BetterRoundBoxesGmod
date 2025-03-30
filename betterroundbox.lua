@@ -1,6 +1,6 @@
 if SERVER then return end
 
-betterRB = betterRB or {}
+betterRB = {}
 
 local cache = {}
 
@@ -35,13 +35,12 @@ function betterRB.GetRoundedBoxMaterial(round, w, h, tl, tr, bl, br)
 end
 
 function betterRB.DrawRoundedBoxEx(round, x, y, w, h, color, tl, tr, bl, br)
+    local mat = betterRB.GetRoundedBoxMaterial(round, w, h, tl, tr, bl, br)
     surface.SetDrawColor(color.r, color.g, color.b, color.a)
-    surface.SetMaterial(betterRB.GetRoundedBoxMaterial(round, w, h, tl, tr, bl, br))
+    surface.SetMaterial(mat)
     surface.DrawTexturedRect(x, y, w, h)
 end
 
 function betterRB.DrawRoundedBox(round, x, y, w, h, color)
-    surface.SetDrawColor(color.r, color.g, color.b, color.a)
-    surface.SetMaterial(betterRB.GetRoundedBoxMaterial(round, w, h, true, true, true, true))
-    surface.DrawTexturedRect(x, y, w, h)
+    betterRB.DrawRoundedBoxEx(round, x, y, w, h, color, true, true, true, true)
 end
