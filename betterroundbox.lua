@@ -8,10 +8,14 @@ local function BoolToNum(b)
     return b and 1 or 0
 end
 
+hook.Add("OnScreenSizeChanged", "betterRB", function()
+    cache = {}
+end)
+
 function betterRB.GetRoundedBoxMaterial(round, w, h, tl, tr, bl, br)
     w, h = math.floor(w), math.floor(h)
     local shortName = string.format("b%u_%u_%u_%d%d%d%d", round, w, h, BoolToNum(tl), BoolToNum(tr), BoolToNum(bl), BoolToNum(br))
-    if cache[shortName] and IsValid(cache[shortName]) then
+    if cache[shortName] then
         return cache[shortName]
     end
 
